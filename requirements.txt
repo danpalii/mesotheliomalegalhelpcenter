@@ -9,7 +9,6 @@ wheel
 dj-database-url==1.2.0
 Django==3.2
 django-embed-video==1.4.8
-google-cloud-storage==2.7.0
 django-ckeditor==6.3.2
 django-jazzmin==2.6.0
 django-js-asset==2.0.0
