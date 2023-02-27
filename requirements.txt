@@ -5,7 +5,6 @@ attrs==22.2.0
 certifi==2022.12.7
 charset-normalizer==2.1.1
 colorama==0.4.6
-wheel
 dj-database-url==1.2.0
 Django==3.2
 django-embed-video==1.4.8
