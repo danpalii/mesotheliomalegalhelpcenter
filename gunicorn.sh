@@ -11,26 +11,25 @@ python3 manage.py collectstatic -- no-input
 echo "Migrations done"
 
 cd /var/lib/jenkins/workspace/mesotheliomalegalhelpcenter
-
-sudo cp -rf gunicorn.socket /etc/systemd/system/
-sudo cp -rf gunicorn.service /etc/systemd/system/
+cp -rf gunicorn.socket /etc/systemd/system/
+cp -rf gunicorn.service /etc/systemd/system/
 
 echo "$USER"
 echo "$PWD"
 
 
 
-sudo systemctl daemon-reload
-sudo systemctl start gunicorn
+systemctl daemon-reload
+systemctl start gunicorn
 
 echo "Gunicorn has started."
 
-sudo systemctl enable gunicorn
+systemctl enable gunicorn
 
 echo "Gunicorn has been enabled."
 
-sudo systemctl restart gunicorn
+systemctl restart gunicorn
 
 
-sudo systemctl status gunicorn
+systemctl status gunicorn
 
