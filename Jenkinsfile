@@ -13,8 +13,8 @@ pipeline {
         stage('Setup gunicorn service'){
             steps {
                 sh '''
+                    sed -i -e 's/\r$//' gunicorn.sh
                     chmod +x gunicorn.sh
-                    whitch 
                     ./gunicorn.sh
                     '''
             }
@@ -22,6 +22,7 @@ pipeline {
         stage('Setup Nginx'){
             steps {
                 sh '''
+                    sed -i -e 's/\r$//' nginx.sh
                     chmod +x nginx.sh
                     ./nginx.sh
                     '''
