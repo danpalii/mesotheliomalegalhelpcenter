@@ -31,4 +31,5 @@ whitenoise==6.3.0
 yarl==1.8.2
 supervisor
 tzdata
+gunicorn
 uwsgi
