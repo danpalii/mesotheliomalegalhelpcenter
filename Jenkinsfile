@@ -7,7 +7,7 @@ pipeline{
       steps  {
             sh '''
             chmod +x envsetup.sh
-            sudo ./envsetup.sh
+            sudo -S ./envsetup.sh
             '''}
         }
         stage('Setup Gunicorn Setup'){
