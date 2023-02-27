@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 if [ -d "env" ] 
 then
     echo "Python virtual environment exists." 
