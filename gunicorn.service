@@ -12,6 +12,3 @@ ExecStart=/var/lib/jenkins/workspace/mesotheliomalegalhelpcenter/env/bin/gunicor
 [Install]
 WantedBy=multi-user.target
 
-
-[Install]
-WantedBy=multi-user.target
