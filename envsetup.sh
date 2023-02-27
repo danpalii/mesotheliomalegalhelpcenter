@@ -7,6 +7,8 @@ else
 fi
 
 source env/bin/activate
+python -m pip install --upgrade pip
+python -m pip install --upgrade pillow
 
 
 pip3 install -r requirements.txt
