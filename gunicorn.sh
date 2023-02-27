@@ -19,8 +19,8 @@ echo "$PWD"
 
 
 
-systemctl daemon-reload
-systemctl start gunicorn
+/usr/bin/systemctl daemon-reload
+/usr/bin/systemctl start gunicorn
 
 echo "Gunicorn has started."
 
@@ -28,8 +28,8 @@ systemctl enable gunicorn
 
 echo "Gunicorn has been enabled."
 
-systemctl restart gunicorn
+/usr/bin/systemctl restart gunicorn
 
 
-systemctl status gunicorn
+/usr/bin/systemctl status gunicorn
 
