@@ -1,0 +1,41 @@
+{% extends 'content_manager/base.html' %}
+{% load static %}
+
+{% block path %}
+
+    <div class="div-breadcromb-links">
+      <a href="{% url 'index' %}" class="breadcrumb-link first w-inline-block">
+        <div>Home</div>
+      </a>
+      <a href="{% url 'faq' %}" class="breadcrumb-link first w-inline-block">
+        <div class="breadcrumb-text last">FAQ</div>
+      </a>
+        <a href="{% url 'category' current_category.slug %}" class="breadcrumb-link first w-inline-block">
+        <div class="breadcrumb-text last">{{ current_category.category_name }}</div>
+      </a>
+    <a href="#" class="curent-page-link w-inline-block">
+        <div class="breadcrumb-text last">{{ article_content.name }}</div>
+      </a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div id="w-node-b3cda8b6-2985-569c-3f8f-2c8f6ba78381-7cdef102" class="main-article">
+        <h1 class="h1">{{ article_content.name }}</h1>
+        <div class="div-line"></div>
+        <div class="update-on">February 23, 2023</div>
+        <p class="snippet">{{ article_content.snippet }}<br></p>
+        <div class="rich-text-db w-richtext">
+            {{ article_content.article|safe }}
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block related_articles %}
+
+        {% include 'content_manager/includes/related_articles.html' %}
+
+{% endblock %}

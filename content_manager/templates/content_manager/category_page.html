@@ -1,0 +1,52 @@
+{% extends 'content_manager/base.html' %}
+{% load static %}
+
+{% block path %}
+
+    <div class="div-breadcromb-links">
+      <a href="{% url 'index' %}" class="breadcrumb-link first w-inline-block">
+        <div>Home</div>
+      </a>
+      <a href="{% url 'faq' %}" class="breadcrumb-link first w-inline-block">
+        <div class="breadcrumb-text last">FAQ</div>
+      </a>
+      <a href="#" class="curent-page-link w-inline-block">
+        <div class="breadcrumb-text last">{{ category_content.category_name }}</div>
+      </a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+        <div id="w-node-_671f9d6f-16b4-9e0b-73c1-679990f4b497-db8559f1" class="category-div">
+            <h1 class="h1">{{ category_content.category_name }}</h1>
+            <p class="snippet white-smoke">{{ category_content.snippet }}</p>
+
+            {% if not article_content %}
+
+            {% else %}
+            <div class="select-question">TOPICS</div>
+            <div class="div-line"></div>
+            <div class="w-dyn-list">
+                <div role="list" class="collection-list-6 w-dyn-items">
+
+                    {% for articles in article_content %}
+                    <div role="listitem" class="collection-item-3 w-dyn-item">
+                    {% if articles.feature_image %}
+                      <a href="{% url 'article' category_content.slug articles.slug %}" class="link-to-answer w-inline-block">
+                        <img srcset="{{ articles.feature_image.url }} 500w, {{ articles.feature_image.url }} 800w" loading="lazy" sizes="(max-width: 479px) 96vw, (max-width: 991px) 48vw, 32vw" src="{{ articles.feature_image.url }}" alt="{{ articles.name }}" class="question-image">
+                        <div class="question"><strong>{{ articles.name }}</strong></div>
+                      </a>
+                    {% else %}
+                        <a href="{% url 'article' category_content.slug articles.slug %}" class="link-to-answer w-inline-block">
+                        <div class="question"><strong>{{ articles.name }}</strong></div>
+                      </a>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
+        </div>
+{% endblock %}

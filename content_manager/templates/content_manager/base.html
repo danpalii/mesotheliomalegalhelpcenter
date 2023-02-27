@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+{#    META#}
+    {% include 'content_manager/includes/meta.html' %}
+{#    META#}
+
+{#      HEAD STYLE AND SCRIPTS#}
+    {% include 'content_manager/includes/head_style_scripts.html' %}
+{#      HEAD STYLE AND SCRIPTS#}
+</head>
+<body>
+  <div class="page-wrapper">
+{#      NAV BAT#}
+      {% include 'content_manager/includes/nav_bar.html' %}
+{#      NAV BAT#}
+
+{#      Page main content#}
+    <div class="section wf-section">
+      <div class="article w-container">
+
+{#        PATH #}
+          {% block path %}
+
+          {% endblock %}
+{#        PATH #}
+
+        <div class="w-layout-grid grid-article-right-sidebar">
+
+{#          CONTENT#}
+            {% block content %}
+
+            {% endblock %}
+{#          CONTENT#}
+
+{#          CAlCULATOR CARD#}
+            {% include 'content_manager/includes/calculator_card.html' %}
+{#          CAlCULATOR CARD#}
+        </div>
+      </div>
+    </div>
+{#  RELATED ARTICLES#}
+    <div class="section wf-section">
+      <div class="article w-container">
+
+          {% block related_articles %}
+
+          {% endblock %}
+
+      </div>
+    </div>
+  </div>
+{#  RELATED ARTICLES#}
+
+{# FOOTER SCRIPTS#}
+  {% include 'content_manager/includes/footer_scripts.html' %}
+{# FOOTER SCRIPTS#}
+
+</body>
+</html>

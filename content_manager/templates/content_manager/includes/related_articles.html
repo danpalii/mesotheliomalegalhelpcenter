@@ -1,0 +1,30 @@
+{% if article_content.related_articles.all %}
+<div class="related-txt-title">Related Topics</div>
+<div class="div-line"></div>
+<div class="collection-list-wrapper w-dyn-list">
+  <div role="list" class="collection-list-7 w-dyn-items">
+    {% for related_article in article_content.related_articles.all %}
+        {% if related_article.name == article_content.name %}
+
+        {% else %}
+        <div role="listitem" class="collection-item-2 w-dyn-item">
+          <a href="{% url 'article' current_category.slug related_article.slug %}" class="link-block w-inline-block">
+              {% if related_article.feature_image %}
+              <img srcset="{{ related_article.feature_image.url }} 500w, {{ related_article.feature_image.url }} 800w" loading="lazy" sizes="(max-width: 479px) 87vw, (max-width: 767px) 26vw, 28vw" src="{{ related_article.feature_image.url }}" alt="{{ related_article.name }}">
+            <h2 class="h2-card">{{ related_article.name }}</h2>
+            <div class="text-card">{{ related_article.meta_title }}</div>
+              {% else %}
+               <h2 class="h2-card">{{ related_article.name }}</h2>
+                <div class="text-card">{{ related_article.meta_title }}</div>
+              {% endif %}
+          </a>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+  </div>
+</div>
+{% else %}
+
+{% endif %}
+

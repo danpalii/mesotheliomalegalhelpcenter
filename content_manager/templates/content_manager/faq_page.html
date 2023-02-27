@@ -1,0 +1,52 @@
+{% extends 'content_manager/base.html' %}
+{% load static %}
+
+{% block path %}
+
+    <div class="div-breadcromb-links">
+      <a href="{% url 'index' %}" class="breadcrumb-link first w-inline-block">
+        <div>Home</div>
+      </a>
+      <a href="{% url 'faq' %}" class="curent-page-link w-inline-block">
+        <div class="breadcrumb-text last">FAQ</div>
+      </a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div id="w-node-b35ec523-15b5-bc73-7ec3-60eeb1d0ff41-395c584c" class="category-div">
+    <h1 class="h1">FAQ</h1>
+    <p class="snippet white-smoke">If you or a loved one has been diagnosed with mesothelioma, you likely have many legal questions that need answering. Fortunately, the Mesothelioma Legal Questions service is here to help.</p>
+    <div class="select-question">TOPICS</div>
+    <div class="div-line"></div>
+    <div class="w-dyn-list">
+      <div role="list" class="collection-list-6 w-dyn-items">
+
+          {% for category in category_content %}
+              <div role="listitem" class="collection-item-3 w-dyn-item">
+                  {% if category.category_feature_image %}
+                  <a href="{% url 'category' category.slug %}" class="link-to-answer w-inline-block">
+                      <img srcset="{{ category.category_feature_image.url }} 500w, {{ category.category_feature_image.url }} 800w" loading="lazy" sizes="(max-width: 479px) 96vw, (max-width: 991px) 48vw, 32vw" src="{{ category.category_feature_image.url }}" alt="{{ category.category_name }}" class="question-image">
+                    <div class="question"><strong>{{ category.category_name }}</strong></div>
+                  </a>
+                    {% else %}
+                      <a href="{% url 'category' category.slug %}" class="link-to-answer w-inline-block">
+                        <div class="question"><strong>{{ category.category_name }}</strong></div>
+                    </a>
+                    {% endif %}
+              </div>
+          {% endfor %}
+
+{#        <div role="listitem" class="collection-item-3 w-dyn-item">#}
+{#          <a href="category-template.html" class="link-to-answer w-inline-block"><img srcset="{% static 'images/63f70c6f617d023037efb249_mesothelioma-lawyer.jpg' %} 500w, {% static 'images/63f70c6f617d023037efb249_mesothelioma-lawyer.jpg' %} 800w" loading="lazy" sizes="(max-width: 479px) 96vw, (max-width: 991px) 48vw, 32vw" src="{% static 'images/63f70c6f617d023037efb249_mesothelioma-lawyer.jpg' %}" alt="mesothelioma lawyer" class="question-image">#}
+{#            <div class="question"><strong>Mesothelioma Legal Questions</strong></div>#}
+{#          </a>#}
+{#        </div>#}
+
+      </div>
+    </div>
+    </div>
+
+{% endblock %}

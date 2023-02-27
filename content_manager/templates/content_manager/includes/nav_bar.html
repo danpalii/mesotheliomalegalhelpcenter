@@ -1,0 +1,17 @@
+{% load static %}
+
+<div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+  <div class="container-5 w-container">
+    <a href="{% url 'index' %}" class="brand w-nav-brand"><img src="{% static 'images/logo.svg' %}" alt="logo" width="28" height="28" class="logo">
+      <div class="text-block">Mesothelioma</div>
+    </a>
+    <nav role="navigation" class="w-nav-menu">
+      <a href="{% url 'index' %}" class="nav-link w-nav-link">Home</a>
+      <a href="#" class="nav-link w-nav-link">About</a>
+      <a href="#" class="nav-link w-nav-link">Contact</a>
+    </nav>
+    <div class="w-nav-button">
+      <div class="w-icon-nav-menu"></div>
+    </div>
+  </div>
+</div>
