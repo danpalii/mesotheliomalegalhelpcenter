@@ -7,14 +7,14 @@ pipeline{
       steps  {
             sh '''
             chmod +x envsetup.sh
-            envsetup.sh
+            ./mesotheliomalegalhelpcenter/envsetup.sh
             '''}
         }
         stage('Setup Gunicorn Setup'){
             steps {
                 sh '''
                 chmod +x gunicorn.sh
-                gunicorn.sh
+                ./mesotheliomalegalhelpcenter/gunicorn.sh
                 '''
             }
         }
@@ -22,7 +22,7 @@ pipeline{
             steps {
                 sh '''
                 chmod +x nginx.sh
-                nginx.sh
+                ./mesotheliomalegalhelpcenter/nginx.sh
                 '''
             }
         }
