@@ -13,6 +13,8 @@ echo "Migrations done"
 cd /var/lib/jenkins/workspace/mesotheliomalegalhelpcenter
 cp -rf gunicorn.socket /etc/systemd/system/
 cp -rf gunicorn.service /etc/systemd/system/
+chmod 777 /etc/systemd/system/gunicorn.socket
+chmod 777 /etc/systemd/system/gunicorn.service
 
 echo "$USER"
 echo "$PWD"
