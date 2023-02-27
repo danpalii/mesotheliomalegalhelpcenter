@@ -6,8 +6,8 @@ pipeline{
        
       steps  {
             sh '''
-            chmod +x ${WORKSPACE}/envsetup.sh
-            ${WORKSPACE}/envsetup.sh
+            chmod +x envsetup.sh
+            ./envsetup.sh
             '''}
         }
         stage('Setup Gunicorn Setup'){
