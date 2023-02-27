@@ -9,11 +9,11 @@ python3 manage.py migrate
 python3 manage.py collectstatic --no-input
 
 echo "Migrations done"
-
+su
 cd /var/lib/jenkins/workspace/mesotheliomalegalhelpcenter
 cp -fr gunicorn.socket /etc/systemd/system/
 cp -fr gunicorn.service /etc/systemd/system/
-
+exit
 echo "$USER"
 echo "$PWD"
 
