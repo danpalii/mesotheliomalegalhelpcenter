@@ -29,4 +29,5 @@ tqdm==4.64.1
 urllib3==1.26.14
 whitenoise==6.3.0
 yarl==1.8.2
+uswgi
 
