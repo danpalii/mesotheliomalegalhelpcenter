@@ -19,8 +19,8 @@ echo "$PWD"
 
 
 
-/usr/bin/systemctl daemon-reload
-/usr/bin/systemctl start gunicorn
+systemctl daemon-reload
+systemctl start gunicorn
 
 echo "Gunicorn has started."
 
