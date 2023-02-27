@@ -4,7 +4,7 @@ pipeline {
          stage('Setup Python Virtual Environment'){
             steps {
                 sh '''
-                    pwd
+                    sed -i -e 's/\r$//' envsetup.sh
                     chmod +x envsetup.sh
                     ./envsetup.sh
                     '''
