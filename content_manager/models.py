@@ -56,6 +56,9 @@ class ArticlesModel(models.Model):
     category = models.ForeignKey('CategoryModel', on_delete=models.CASCADE, blank=True)
     related_articles = models.ManyToManyField('self', blank=True, symmetrical=False)
 
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         verbose_name = "Article"
         verbose_name_plural = "Article"

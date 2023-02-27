@@ -16,7 +16,6 @@ class FaqView(TemplateView):
 
         return context
 
-
 class CategoryView(TemplateView):
     template_name = 'content_manager/category_page.html'
 

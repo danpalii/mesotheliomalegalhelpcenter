@@ -24,7 +24,6 @@ else:
 
 DEBUG = int(os.environ.get("DEBUG", default=1))
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -122,14 +121,14 @@ STATIC_URL = '/static/'
 # ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-if int(os.environ['GAE_APPLICATION']):
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    GS_BUCKET_NAME = 'media_mesothelioma_how'
-    GS_DEFAULT_ACL = 'publicRead'
-    MEDIA_URL = 'https://storage.googleapis.com/media_mesothelioma_how/'
-else:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    MEDIA_URL = '/media/'
+# if int(os.environ['GAE_APPLICATION']):
+#     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+#     GS_BUCKET_NAME = 'media_mesothelioma_how'
+#     GS_DEFAULT_ACL = 'publicRead'
+#     MEDIA_URL = 'https://storage.googleapis.com/media_mesothelioma_how/'
+# else:
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -154,7 +153,7 @@ JAZZMIN_UI_TWEAKS = {
     "theme": "simplex",
 }
 
-
+# CKEDITOR SETTINGS
 EMBED_VIDEO_BACKENDS = {
     'default': 'embed_video.backends.YoutubeBackend',
 }

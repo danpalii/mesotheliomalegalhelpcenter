@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.http import HttpResponseRedirect
-from django.template.response import TemplateResponse
-from django.shortcuts import render, redirect, reverse
-
-from django.utils.safestring import mark_safe
+from django.shortcuts import reverse
 
 from .models import (
     AuthorsModel, ArticlesModel, CategoryModel
