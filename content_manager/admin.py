@@ -55,12 +55,8 @@ class ArticlesAdmin(admin.ModelAdmin):
 
     def response_change(self, request, obj):
         ret = super().response_change(request, obj)
-        if '_your_action' in request.POST:
-            context = {
-                'current_category': obj.category.slug,
-                'article_content': obj,
-            }
-            print(context)
+        if '_preview' in request.POST:
+            return HttpResponseRedirect(reverse('article', kwargs={'cat_slug': obj.category.slug, 'art_slug': obj.slug}))
         return ret
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
