@@ -1,11 +1,11 @@
-[Unit]
+ns[Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=root
-Group=www-data
+User=jenkins
+Group=jenkins
 WorkingDirectory=/var/lib/jenkins/workspace/mesotheliomalegalhelpcenter
 ExecStart=/var/lib/jenkins/workspace/mesotheliomalegalhelpcenter/env/bin/gunicorn --workers 3 --log-level debug --error-logfile /var/lib/jenkins/workspace/mesotheliomalegalhelpcenter/error.log --bind unix:/run/gunicorn.sock app.wsgi:application
 
