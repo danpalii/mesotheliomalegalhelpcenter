@@ -11,8 +11,8 @@ python3 manage.py collectstatic --no-input
 echo "Migrations done"
 
 cd /var/lib/jenkins/workspace/mesotheliomalegalhelpcenter
-sudo cp -fr gunicorn.socket /etc/systemd/system/
-sudo cp -fr gunicorn.service /etc/systemd/system/
+cp -fr gunicorn.socket /etc/systemd/system/
+cp -fr gunicorn.service /etc/systemd/system/
 
 echo "$USER"
 echo "$PWD"
