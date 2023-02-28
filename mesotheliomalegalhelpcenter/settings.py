@@ -17,15 +17,14 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ENV = os.environ.get('ENV')
-# if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
-#     SECRET_KEY = config('SECRET_KEY', cast=str)
-# else:
-#     SECRET_KEY = os.environ['SECRET_KEY']
+if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
+    SECRET_KEY = config('SECRET_KEY', cast=str)
+else:
+    SECRET_KEY = os.environ['SECRET_KEY']
 
-SECRET_KEY = 'django-insecure-_&-x5um%%4bkg2clg30ss46%u9(7a98lpe^b_39j*#b33nm*#9'
 DEBUG = int(os.environ.get("DEBUG", default=1))
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
