@@ -9,18 +9,18 @@
       <a href="{% url 'index' %}" class="nav-link w-nav-link">Home</a>
       <a href="#" class="nav-link w-nav-link">About</a>
       <a href="#" class="nav-link w-nav-link">Contact</a>
-        <div class="dropdown">
-            <button class="dropbtn">Articles</button>
-            <div class="dropdown-content">
-                {% for article in article_select.all %}
-                    {% if article.dropdown_select == True %}
-                        <a href="{% url 'article' article.category.slug article.slug %}" class="">{{ article.name }}</a>
-                    {% else %}
-
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+{#        <div class="dropdown">#}
+{#            <button class="dropbtn">Articles</button>#}
+{#            <div class="dropdown-content">#}
+{#                {% for article in article_select.all %}#}
+{#                    {% if article.dropdown_select == True %}#}
+{#                        <a href="{% url 'article' article.category.slug article.slug %}" class="">{{ article.name }}</a>#}
+{#                    {% else %}#}
+{##}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
     </nav>
     <div class="w-nav-button">
       <div class="w-icon-nav-menu"></div>
