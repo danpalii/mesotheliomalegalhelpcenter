@@ -22,33 +22,25 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ArticlesModel)
 class ArticlesAdmin(admin.ModelAdmin):
-    fields = (
-        'name',
-        'slug',
-        'category',
-        'meta_title',
-        'meta_description',
-        'meta_reading_time',
-        'snippet',
-        'feature_image',
-        'article',
-
-        'faq_q1',
-        'faq_a1',
-
-        'faq_q2',
-        'faq_a2',
-
-        'faq_q3',
-        'faq_a3',
-
-        'author',
-        'related_articles',
+    fieldsets = (
+        ('', {'fields': (
+                           'name', 'slug', 'category', 'meta_title',
+                           'meta_description', 'meta_reading_time', 'snippet',
+                           'feature_image', 'article'
+        )}),
+        ('', {'fields': ('author', 'related_articles', 'sort_number', 'dropdown_select')}),
+        ('', {'fields': ('added_time', 'updated_time')}),
     )
-    list_display = ['name', 'slug']
+
+    list_display = ['name', 'slug', 'added_time', 'updated_time','dropdown_select']
     list_display_links = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('category',)
+    readonly_fields = (
+        'added_time',
+        'updated_time',
+    )
+
 
     def response_change(self, request, obj):
         ret = super().response_change(request, obj)

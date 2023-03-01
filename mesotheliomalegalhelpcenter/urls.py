@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from content_manager.views import HomeView, FaqView, CategoryView, ArticleView
+from content_manager.views import HomeView, FaqView, CategoryView, ArticleView, upload_image
 
 urlpatterns = [
     path('website-management/', admin.site.urls),
@@ -14,7 +14,8 @@ urlpatterns = [
     path('faq/<slug:cat_slug>/<slug:art_slug>', ArticleView.as_view(), name='article'),
 
     path("robots.txt", TemplateView.as_view(template_name="content_manager/robots.txt", content_type="text/plain")),  #add the robots.txt file
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('tinymce/', include('tinymce.urls')),
+    path('upload_image/', upload_image),
 
 ]
 if settings.DEBUG:

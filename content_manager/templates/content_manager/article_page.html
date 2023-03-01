@@ -25,7 +25,7 @@
     <div id="w-node-b3cda8b6-2985-569c-3f8f-2c8f6ba78381-7cdef102" class="main-article">
         <h1 class="h1">{{ article_content.name }}</h1>
         <div class="div-line"></div>
-        <div class="update-on">February 23, 2023</div>
+        <div class="update-on">{{ article_content.updated_time|date:'F d, Y' }}</div>
         <p class="snippet">{{ article_content.snippet }}<br></p>
         <div class="rich-text-db w-richtext">
             {{ article_content.article|safe }}
@@ -35,7 +35,5 @@
 {% endblock %}
 
 {% block related_articles %}
-
         {% include 'content_manager/includes/related_articles.html' %}
-
 {% endblock %}

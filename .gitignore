@@ -3,6 +3,3 @@
 db.sqlite3
 __pycache__/
 venv/
-dumpdata/
-
-server_data_base.txt

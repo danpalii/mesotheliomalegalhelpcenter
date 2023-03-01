@@ -1,30 +1,61 @@
 {% if article_content.related_articles.all %}
-<div class="related-txt-title">Related Topics</div>
-<div class="div-line"></div>
-<div class="collection-list-wrapper w-dyn-list">
-  <div role="list" class="collection-list-7 w-dyn-items">
-    {% for related_article in article_content.related_articles.all %}
-        {% if related_article.name == article_content.name %}
+    <div class="related-txt-title">Related Topics</div>
+    <div class="div-line"></div>
 
-        {% else %}
-        <div role="listitem" class="collection-item-2 w-dyn-item">
-          <a href="{% url 'article' current_category.slug related_article.slug %}" class="link-block w-inline-block">
-              {% if related_article.feature_image %}
-              <img srcset="{{ related_article.feature_image.url }} 500w, {{ related_article.feature_image.url }} 800w" loading="lazy" sizes="(max-width: 479px) 87vw, (max-width: 767px) 26vw, 28vw" src="{{ related_article.feature_image.url }}" alt="{{ related_article.name }}">
-            <h2 class="h2-card">{{ related_article.name }}</h2>
-            <div class="text-card">{{ related_article.meta_title }}</div>
-              {% else %}
-               <h2 class="h2-card">{{ related_article.name }}</h2>
-                <div class="text-card">{{ related_article.meta_title }}</div>
-              {% endif %}
-          </a>
+    {% for related_article_category in category.all %}
+{#    {% for related_article_category in article_content.related_articles.all %}#}
+{#        {% if related_article.category.category_name in related_article_category.category_name %}#}
+
+{#        {% for article in article_content.related_articles.all %}#}
+{#        <p>1 = {{ article.category.category_name }}</p>#}
+{#        <p>2 = {{ related_article_category.category_name }}</p>#}
+{#            {% if article and article.category.category_name == related_article_category.category_name %}#}
+{#                <p>Succes</p>#}
+{#            {% else %}#}
+{#                <p>Error</p>#}
+{#            {% endif %}#}
+{#            {% endfor %}#}
+
+        <div class="related-txt-title">{{ related_article_category.category_name }}</div>
+        <div class="div-line"></div>
+
+        <div class="collection-list-wrapper w-dyn-list">
+          <div role="list" class="collection-list-7 w-dyn-items">
+
+            {% for related_article in article_content.related_articles.all %}
+                {% if related_article.category.category_name != related_article_category.category_name %}
+        {#            ....#}
+                {% else %}
+                    {% if related_article.name == article_content.name %}
+            {#            ....#}
+                    {% else %}
+                    <div role="listitem" class="collection-item-2 w-dyn-item">
+                      <a href="{% url 'article' current_category.slug related_article.slug %}" class="link-block w-inline-block">
+                          {% if related_article.feature_image %}
+                                <img srcset="{{ related_article.feature_image.url }} 500w, {{ related_article.feature_image.url }} 800w"
+                                     loading="lazy" sizes="(max-width: 479px) 87vw, (max-width: 767px) 26vw, 28vw"
+                                     src="{{ related_article.feature_image.url }}"
+                                     alt="{{ related_article.name }}">
+                                <h2 class="h2-card">{{ related_article.name }}</h2>
+                                <div class="text-card">{{ related_article.meta_title }}</div>
+                          {% else %}
+                                <h2 class="h2-card">{{ related_article.name }}</h2>
+                                <div class="text-card">{{ related_article.meta_title }}</div>
+                          {% endif %}
+                      </a>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+          </div>
         </div>
-        {% endif %}
+{#        {% else %}#}
+{#            ....#}
+{#        {% endif %}#}
+
     {% endfor %}
-
-  </div>
-</div>
 {% else %}
-
+{#            ....#}
 {% endif %}
 

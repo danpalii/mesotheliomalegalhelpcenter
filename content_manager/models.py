@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from tinymce.models import HTMLField
 
 class WebSiteGeneralSettingsModel(models.Model):
     pass
@@ -41,8 +42,7 @@ class ArticlesModel(models.Model):
     meta_reading_time = models.CharField(max_length=50, blank=True)
     snippet = models.TextField(blank=True)
     feature_image = models.ImageField(upload_to='article_feature_image', blank=True)
-    # article = RichTextField(blank=True)
-    article = RichTextUploadingField(blank=True)
+    article = HTMLField(blank=True)
     author = models.ForeignKey('AuthorsModel', on_delete=models.CASCADE, blank=True)
 
     faq_q1 = models.CharField(max_length=255, blank=True, verbose_name='FAQ Q1')
@@ -53,11 +53,15 @@ class ArticlesModel(models.Model):
 
     faq_q3 = models.CharField(max_length=255, blank=True, verbose_name='FAQ Q3')
     faq_a3 = models.TextField(blank=True, verbose_name='FAQ A3')
+
     category = models.ForeignKey('CategoryModel', on_delete=models.CASCADE, blank=True)
     related_articles = models.ManyToManyField('self', blank=True, symmetrical=False)
 
-    added = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    sort_number = models.IntegerField(blank=True)
+
+    added_time = models.DateField(auto_now_add=True)
+    updated_time = models.DateField(auto_now=True)
+    dropdown_select = models.BooleanField(blank=True)
 
     class Meta:
         verbose_name = "Article"
