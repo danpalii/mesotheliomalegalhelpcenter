@@ -16,6 +16,7 @@ from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+<<<<<<< HEAD
 ENV = os.environ.get('ENV')
 if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
     SECRET_KEY = config('SECRET_KEY', cast=str)
@@ -24,6 +25,18 @@ else:
 
 DEBUG = int(os.environ.get("DEBUG", default=1))
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
+=======
+# ENV = os.environ.get('ENV')
+# if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
+#     SECRET_KEY = config('SECRET_KEY', cast=str)
+# else:
+#     SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG=True
+SECRET_KEY = 'django-insecure-g)z*i=2ox+6rwfxo-b236a&t7@)m7!uw3jz(-l_o&z89rb)^-8'
+# DEBUG = int(os.environ.get("DEBUG", default=1))
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['139.144.227.212']
+>>>>>>> 9106df360502eaa94256b6aa42f0bf5321fb1cb0
 
 
 INSTALLED_APPS = [
