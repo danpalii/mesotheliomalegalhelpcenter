@@ -36,6 +36,7 @@ class CategoryView(TemplateView):
         context['category_content'] = CategoryModel.objects.get(slug=self.kwargs.get('slug'))
         context['article_content'] = ArticlesModel.objects.filter(category__slug
                                                                   =self.kwargs.get('slug')).order_by('sort_number')
+
         return context
 
 

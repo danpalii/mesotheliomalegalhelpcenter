@@ -17,26 +17,9 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# ENV = os.environ.get('ENV')
-# if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
-#     SECRET_KEY = config('SECRET_KEY', cast=str)
-# else:
-#     SECRET_KEY = os.environ['SECRET_KEY']
-#
-# DEBUG = int(os.environ.get("DEBUG", default=1))
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
-
-# ENV = os.environ.get('ENV')
-# if int(os.environ.get('SECRET_KEY_VALUE', default=1)):
-#     SECRET_KEY = config('SECRET_KEY', cast=str)
-# else:
-#     SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG=True
-SECRET_KEY = 'django-insecure-g)z*i=2ox+6rwfxo-b236a&t7@)m7!uw3jz(-l_o&z89rb)^-8'
-# DEBUG = int(os.environ.get("DEBUG", default=1))
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ") if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['139.144.227.212']
-ALLOWED_HOSTS = ['*']
+DEBUG=config("DEBUG")
+SECRET_KEY = config("SECRET_KEY")
+ALLOWED_HOSTS = [config("PRIMARY_DOMAIN"),config("SECONDARY_DOMAIN")]
 
 
 
@@ -84,22 +67,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mesotheliomalegalhelpcenter.wsgi.application'
 
-if int(os.environ.get('DATABASEUSE', default=1)):
+if config("MODE") == "prod":
+    DATABASES = {
+      'default': {
+        'HOST': config("DATABASE_HOST"),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': config("DATABASE_USER"),
+        'PASSWORD': config("DATABASE_PASS"),
+        'NAME': config("DATABASE_NAME"),
+        'PORT': config("DATABASE_PORT")
+      },
+    }
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-    }
-else:
-    DATABASES = {
-      'default': {
-        'HOST': os.environ['PMA_HOST'],
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': os.environ['POSTGRES_USER'],
-        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'NAME': os.environ['POSTGRES_DB'],
-      },
     }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -133,14 +117,24 @@ STATIC_URL = '/static/'
 # ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# if int(os.environ['GAE_APPLICATION']):
-#     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-#     GS_BUCKET_NAME = 'media_mesothelioma_how'
-#     GS_DEFAULT_ACL = 'publicRead'
-#     MEDIA_URL = 'https://storage.googleapis.com/media_mesothelioma_how/'
-# else:
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+if config("MODE") == "prod":
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    LINODE_BUCKET=config("BUCKET_NAME")
+    LINODE_BUCKET_REGION=config("BUCKET_REGION")
+    LINODE_BUCKET_ACCESS_KEY=config("LINODE_BUCKET_ACCESS_KEY")
+    LINODE_BUCKET_SECRET_KEY=config("LINODE_BUCKET_SECRET_KEY")
+
+
+    AWS_S3_ENDPOINT_URL=f'https://{LINODE_BUCKET_REGION}.linodeobjects.com'
+    AWS_ACCESS_KEY_ID=LINODE_BUCKET_ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY=LINODE_BUCKET_SECRET_KEY
+    AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
+    AWS_S3_USE_SSL=True
+    AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET
+
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = config('MEDIA')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
