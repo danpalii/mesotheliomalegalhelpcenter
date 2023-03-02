@@ -70,6 +70,10 @@ img {
   border-radius: 8px;
   height: 50% !important;
 }
+iframe {
+  border-style: hidden;
+  /*height: 50% !important;*/
+}
 
 strong {
   color: #000;
