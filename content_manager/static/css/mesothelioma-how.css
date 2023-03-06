@@ -69,8 +69,8 @@ img {
   padding: 10px;
   border-radius: 8px;
   /*height: 50% !important;*/
-  height: auto;
-  width: auto;
+  /*height: auto;*/
+  /*width: 100%;*/
 }
 iframe {
   border-style: hidden;
