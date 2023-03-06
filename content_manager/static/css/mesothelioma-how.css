@@ -68,11 +68,12 @@ img {
   max-width: 100%;
   padding: 10px;
   border-radius: 8px;
-  height: 50% !important;
+  /*height: 50% !important;*/
+  height: auto;
+  width: auto;
 }
 iframe {
   border-style: hidden;
-  /*height: 50% !important;*/
 }
 
 strong {
